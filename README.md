@@ -1,56 +1,69 @@
 package OopsPractice;
 
-public class Car {
+public class Main {
 	
-	private String brand;
+	public static void main(String[] args) {
+		Vehicle vehicle=new Vehicle(200);
+		vehicle.move();
+		Car2 car2=new Car2(100);
+		car2.move();
+		
+	}
+
+}
+
+class Vehicle{
 	private int speed;
 	
-	public Car(String brand,int speed) {
-		this.brand=brand;
+	//getter and setter for outside access and modification
+	public int getSpeed() {
+		return speed;
+	}
+	
+	public void setSpeed(int speed) {
+		this.speed=speed;
+	}
+	//constructor for object initilisation
+	public Vehicle(int speed) {
 		this.speed=speed;
 	}
 	
-	//NO need of getter and setters as we are going to call these fields inside this class only
-//	public String getBrand() {
-//		return brand;
-//	}
-//	public void setBrand(String brand) {
-//		this.brand=brand;
-//	}
-//	
-//	public int getSpeed() {
-//		return speed;
-//	}
-//	
-//	public void setSpeed(int speed) {
-//		this.speed=speed;
-//	}
-	
-	//state + behavour change
-	public void accelerate() {
-		speed+=10;
-		
-		System.out.println("My car is accelarating at speed :" + speed);
-		
-		
+	//move method for state and behavour
+	public void move() {
+		//speed+=10;
+		System.out.println("My vehicle is moving with speed :" + speed);
 	}
-	
-	public void retard() {
-		speed-=10;
-		
-		System.out.println("My car is retarding at speed :" + speed);
-	}
-	
-	public static void main(String[] args) {
-		Car car=new Car("BMW",100);
-		
-		
-		car.accelerate();
-		System.out.println(car.brand + " " +  car.speed);
-		
-		car.retard();
-	}
+}
+
+class Car2 extends Vehicle{
 	
 	
 
+	public Car2(int speed) {
+		super(speed);
+		// TODO Auto-generated constructor stub
+	}
+	
+	@Override
+	public void move() {
+		int speed=getSpeed();
+		
+		System.out.println("my car is moving with speed :" + speed);
+	}
+	
+	//Accelerate method
+	public void accelerate() {
+		int speed=getSpeed();
+		speed+=10;
+		
+		System.out.println("My car is accelarating with speed :" + speed);
+		
+		
+				
+	}
+	
+	
+	
+	
+	
 }

@@ -4,12 +4,16 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
-		Vehicle v1=new Bike(100);
-		Vehicle v2=new Car2(100);
+		Car2 car=new Car2(100);
+		car.startCar();
+		car.move();
+		
+//		Vehicle v1=new Bike(100);
+//		Vehicle v2=new Car2(100);
 		//  Vehicle v3=new Vehicle();//now allowed as it is not complete class so we cant make object of it
 		
-		v1.move();
-		v2.move();
+//		v1.move();
+//		v2.move();
 //		Vehicle vehicle=new Vehicle(200);
 //		vehicle.move();
 //		Car2 car2=new Car2(100);
@@ -40,18 +44,25 @@ abstract class Vehicle{
 }
 
 class Car2 extends Vehicle{
+	private Engine engine;
 	
 	
 
 	public Car2(int speed) {
 		super(speed);
 		// TODO Auto-generated constructor stub
+		this.engine=new Engine();
 	}
 	
 	@Override
 	public void move() {
 		
 		System.out.println("my car is moving with speed :" + speed);
+	}
+	
+	public void startCar() {
+		engine.start();
+		System.out.println("car started");
 	}
 	
 	//Accelerate method
@@ -82,3 +93,11 @@ class Bike extends Vehicle{
 		System.out.println("My Bike is moving with speed :"+ speed);
 	}
 }
+class Engine {
+	public void start() {
+		System.out.println("Engine strated");
+		
+	}
+}
+
+

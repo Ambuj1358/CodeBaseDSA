@@ -4,9 +4,18 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
-		Car2 car=new Car2(100);
-		car.startCar();
-		car.move();
+		Car2 car1=new Car2(100,new PetrolEngine());
+		Car2 car2=new Car2(200,new ElectricEngine());
+		
+		car1.startCar();
+		car1.move();
+		
+		car2.startCar();
+		car2.move();
+		
+//		Car2 car=new Car2(100);
+//		car.startCar();
+//		car.move();
 		
 //		Vehicle v1=new Bike(100);
 //		Vehicle v2=new Car2(100);
@@ -48,10 +57,11 @@ class Car2 extends Vehicle{
 	
 	
 
-	public Car2(int speed) {
+	public Car2(int speed,Engine engine) {//now engine parameter is mandatory as we cant take it from anywhere else
 		super(speed);
 		// TODO Auto-generated constructor stub
-		this.engine=new Engine();
+//		this.engine=new Engine();//as object of interface can't be created with child class
+		this.engine=engine;
 	}
 	
 	@Override
@@ -93,10 +103,35 @@ class Bike extends Vehicle{
 		System.out.println("My Bike is moving with speed :"+ speed);
 	}
 }
-class Engine {
+//class Engine {
+//	public void start() {
+//		System.out.println("Engine started");
+//		
+//	}
+//}
+
+//Dependency inversion principle
+interface Engine {
+	void start();
+}
+
+class PetrolEngine implements Engine{
+
+	@Override
 	public void start() {
-		System.out.println("Engine strated");
+		// TODO Auto-generated method stub
+		System.out.println("Petrol engine started");
 		
+	}
+	
+	
+}
+
+class ElectricEngine implements Engine{
+	
+	@Override
+	public void start() {
+		System.out.println("Electric engine started");
 	}
 }
 

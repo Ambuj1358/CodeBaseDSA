@@ -3,17 +3,23 @@ package OopsPractice;
 public class Main {
 	
 	public static void main(String[] args) {
-		Vehicle vehicle=new Vehicle(200);
-		vehicle.move();
-		Car2 car2=new Car2(100);
-		car2.move();
+		
+		Vehicle vehicke=new Bike(100);
+		Vehicle vehicke2=new Car2(100);
+		
+		vehicke.move();
+		vehicke2.move();
+//		Vehicle vehicle=new Vehicle(200);
+//		vehicle.move();
+//		Car2 car2=new Car2(100);
+//		car2.move();
 		
 	}
 
 }
 
 class Vehicle{
-	private int speed;
+	protected int speed;
 	
 	//getter and setter for outside access and modification
 	public int getSpeed() {
@@ -46,15 +52,16 @@ class Car2 extends Vehicle{
 	
 	@Override
 	public void move() {
-		int speed=getSpeed();
 		
 		System.out.println("my car is moving with speed :" + speed);
 	}
 	
 	//Accelerate method
 	public void accelerate() {
-		int speed=getSpeed();
-		speed+=10;
+		//int speed=getSpeed();
+	//	speed+=10;//chang in local varivle does not cjange object state->>use setter method
+		
+		setSpeed(speed+10);
 		
 		System.out.println("My car is accelarating with speed :" + speed);
 		
@@ -66,4 +73,14 @@ class Car2 extends Vehicle{
 	
 	
 	
+}
+class Bike extends Vehicle{
+	
+	public Bike(int speed) {
+		super(speed);
+	}
+	@Override
+	public void move() {
+		System.out.println("My Bike is moving with speed :"+ speed);
+	}
 }

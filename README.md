@@ -4,11 +4,12 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
-		Vehicle vehicke=new Bike(100);
-		Vehicle vehicke2=new Car2(100);
+		Vehicle v1=new Bike(100);
+		Vehicle v2=new Car2(100);
+		//  Vehicle v3=new Vehicle();//now allowed as it is not complete class so we cant make object of it
 		
-		vehicke.move();
-		vehicke2.move();
+		v1.move();
+		v2.move();
 //		Vehicle vehicle=new Vehicle(200);
 //		vehicle.move();
 //		Car2 car2=new Car2(100);
@@ -18,27 +19,24 @@ public class Main {
 
 }
 
-class Vehicle{
+abstract class Vehicle{
 	protected int speed;
 	
-	//getter and setter for outside access and modification
-	public int getSpeed() {
-		return speed;
-	}
-	
-	public void setSpeed(int speed) {
-		this.speed=speed;
-	}
+//	//getter and setter for outside access and modification
+//	public int getSpeed() {
+//		return speed;
+//	}
+//	
+//	public void setSpeed(int speed) {
+//		this.speed=speed;
+//	}
 	//constructor for object initilisation
 	public Vehicle(int speed) {
 		this.speed=speed;
 	}
 	
 	//move method for state and behavour
-	public void move() {
-		//speed+=10;
-		System.out.println("My vehicle is moving with speed :" + speed);
-	}
+	public abstract void move() ;
 }
 
 class Car2 extends Vehicle{
@@ -61,7 +59,7 @@ class Car2 extends Vehicle{
 		//int speed=getSpeed();
 	//	speed+=10;//chang in local varivle does not cjange object state->>use setter method
 		
-		setSpeed(speed+10);
+		speed=speed+10;
 		
 		System.out.println("My car is accelarating with speed :" + speed);
 		

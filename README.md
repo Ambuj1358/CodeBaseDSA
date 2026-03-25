@@ -1,24 +1,16 @@
-<dependencies>
+<hibernate-configuration>
+ <session-factory>
 
-    <!-- Hibernate Core -->
-    <dependency>
-        <groupId>org.hibernate</groupId>
-        <artifactId>hibernate-core</artifactId>
-        <version>5.6.15.Final</version>
-    </dependency>
+    <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/testdb</property>
+    <property name="hibernate.connection.username">postgres</property>
+    <property name="hibernate.connection.password">yourpassword</property>
 
-    <!-- PostgreSQL Driver -->
-    <dependency>
-        <groupId>org.postgresql</groupId>
-        <artifactId>postgresql</artifactId>
-        <version>42.7.3</version>
-    </dependency>
+    <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+    <property name="hibernate.hbm2ddl.auto">update</property>
+    <property name="show_sql">true</property>
 
-    <!-- JPA (Annotations) -->
-    <dependency>
-        <groupId>jakarta.persistence</groupId>
-        <artifactId>jakarta.persistence-api</artifactId>
-        <version>2.2.3</version>
-    </dependency>
+    <mapping class="Employee"/>
 
-</dependencies>
+ </session-factory>
+</hibernate-configuration>
